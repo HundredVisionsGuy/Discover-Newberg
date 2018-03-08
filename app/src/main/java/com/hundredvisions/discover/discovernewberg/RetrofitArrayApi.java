@@ -10,6 +10,6 @@ import retrofit2.http.GET;
  */
 
 public interface RetrofitArrayApi {
-    @GET("android/wp-json/wp/v2/posts")
+    @GET("wp-json/wp/v2/posts")
     Call<List<WPPost>> getPostInfo();
 }

@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayoutManager mLayoutManager;
     private ArrayList<Model> list;
     private RecyclerViewAdapter adapter;
-    private String baseURL = "https://discover.hundredvisions.com";
+    private String baseURL = "https://discover.hundredvisions.com/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +74,8 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<WPPost>> call, Throwable t) {
-
+                Toast toast = Toast.makeText(getApplicationContext(), "oops!" + t.toString(), Toast.LENGTH_LONG);
+                toast.show();
             }
         });
     }
