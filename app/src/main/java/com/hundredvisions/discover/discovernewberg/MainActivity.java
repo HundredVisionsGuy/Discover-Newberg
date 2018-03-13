@@ -8,6 +8,9 @@ import android.widget.ProgressBar;
 
 import java.util.ArrayList;
 
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
@@ -15,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayoutManager mLayoutManager;
     private ArrayList<Model> list;
     private RecyclerViewAdapter adapter;
+
+    private String baseURL = "https://discover.hundredvisions.com/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +33,16 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(mLayoutManager);
 
         list = new ArrayList<Model>();
+        /// call retrofit
+        getRetrofit();
+
         adapter = new RecyclerViewAdapter(list, MainActivity.this);
         recyclerView.setAdapter(adapter);
+    }
+    public void getRetrofit() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(baseURL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
     }
 }
