@@ -68,7 +68,12 @@ public class MainActivity extends AppCompatActivity {
                     tempdetails = tempdetails.replace("&amp;", "&");
                     tempdetails = tempdetails.replace("&#038;", "&");
 
-                    list.add(new Model(response.body().get(i).getId(), Model.IMAGE_TYPE, response.body().get(i).getTitle().getRendered(),
+                    String title_text = response.body().get(i).getTitle().getRendered().toString();
+                    title_text = title_text.replace("&#8217;", "'");
+                    title_text = title_text.replace("&amp;", "&");
+                    title_text = title_text.replace("&#038;", "&");
+
+                    list.add(new Model(response.body().get(i).getId(), Model.IMAGE_TYPE, title_text,
                             tempdetails,
                             response.body().get(i).getLinks().getWpFeaturedmedia().get(0).getHref()));
                 }
