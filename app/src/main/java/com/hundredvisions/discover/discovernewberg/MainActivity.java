@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                     tempdetails = tempdetails.replace("</p>","");
                     tempdetails = tempdetails.replace("[&hellip;]","");
 
-                    list.add(new Model(Model.IMAGE_TYPE, response.body().get(i).getTitle().getRendered(),
+                    list.add(new Model(response.body().get(i).getId(), Model.IMAGE_TYPE, response.body().get(i).getTitle().getRendered(),
                             tempdetails,
                             response.body().get(i).getLinks().getWpFeaturedmedia().get(0).getHref()));
                 }
